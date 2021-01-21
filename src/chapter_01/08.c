@@ -5,9 +5,7 @@
 int main() {
   int c, b, t, nl;
 
-  b = 0;
-  t = 0;
-  nl = 0;
+  b = t = nl = 0;
 
   while ((c = getchar()) != EOF) {
     if (c == ' ') {
@@ -16,8 +14,6 @@ int main() {
       ++t;
     } else if (c == '\n') {
       ++nl;
-    } else {
-      continue;
     }
   }
 
