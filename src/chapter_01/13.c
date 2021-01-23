@@ -4,27 +4,41 @@
 
 #include <stdio.h>
 
-#define DIGITS 10
+#define MAX_WORD_LEN 20
+#define IN 1
+#define OUT 0
 
 int main() {
-  int c, i;
-  int ndigit[DIGITS];
+  int c, i, state, j, wl;
+  int ndigit[MAX_WORD_LEN];
 
-  for (i = 0; i < DIGITS; ++i) {
+  for (i = 0; i < MAX_WORD_LEN; ++i) {
     ndigit[i] = 0;
   }
 
+  state = OUT;
+  wl = 0;
+
   while ((c = getchar()) != EOF) {
-    if (c >= '0' && c <= '9') {
-      ++ndigit[c - '0'];
+    if (c == ' ' || c == '\n' || c == '\t') {
+      state = OUT;
+
+      if (wl < MAX_WORD_LEN) {
+        ++ndigit[wl];
+      }
+
+      wl = 0;
+    } else if (state == OUT) {
+      state = IN;
+    } else {
+      ++wl;
     }
   }
 
-  for (i = 0; i < DIGITS; ++i) {
-    int j;
+  for (i = 0; i < MAX_WORD_LEN; ++i) {
     j = 0;
 
-    printf("%d: ", i);
+    printf("%d: ", i + 1);
 
     if (ndigit[i] == 0) {
       putchar(' ');

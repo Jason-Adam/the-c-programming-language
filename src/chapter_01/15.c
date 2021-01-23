@@ -1,7 +1,9 @@
-/* Modify the temperature conversion program to print a heading above the table
- */
+/* rewrite the temperature conversion program of section 1.2 to use a function
+ * for conversion */
 
 #include <stdio.h>
+
+float convert_fahr_cels(float fahr) { return (5.0 / 9.0) * (fahr - 32.0); }
 
 int main() {
   float fahr, celsius;
@@ -12,10 +14,9 @@ int main() {
   step = 20;
 
   fahr = lower;
-  printf("Fahr\tCelsius\n");
 
   while (fahr <= upper) {
-    celsius = (5.0 / 9.0) * (fahr - 32.0);
+    celsius = convert_fahr_cels(fahr);
     printf("%3.0f\t%6.1f\n", fahr, celsius);
     fahr = fahr + step;
   }
