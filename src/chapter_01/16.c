@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-#define MAXLINE 1000
+#define MAXLINE 100
 
 int gline(char s[], int lim) {
   int c, i;
@@ -46,6 +46,7 @@ int main() {
   }
 
   if (max > 0) {
+    printf("%d -- ", max);
     printf("%s", longest);
   }
 
